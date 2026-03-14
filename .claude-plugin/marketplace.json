@@ -1,0 +1,13 @@
+{
+  "name": "jason-cc-skills",
+  "owner": {
+    "name": "Jason Bian"
+  },
+  "plugins": [
+    {
+      "name": "academic-writing",
+      "source": "./academic-writing",
+      "description": "Expert-level guidance for writing academic papers in engineering and computer science."
+    }
+  ]
+}

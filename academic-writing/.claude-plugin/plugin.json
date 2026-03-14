@@ -1,0 +1,12 @@
+{
+  "name": "academic-writing",
+  "description": "Expert-level guidance for writing academic papers in engineering and computer science.",
+  "version": "2.0.0",
+  "skills": [
+    "./skills/draft-from-code",
+    "./skills/rebuttal",
+    "./skills/revise",
+    "./skills/proofread",
+    "./skills/peer-review"
+  ]
+}
