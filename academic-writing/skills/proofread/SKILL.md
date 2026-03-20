@@ -49,10 +49,15 @@ Also check:
 - **Calibrated hedging**: "can" for observations, "could" for hypotheses, no stacked hedges
 - **Precision over vagueness**: Replace "good results" → "92% accuracy", "large dataset" → "1.2M examples"
 - **Vocabulary signaling**: Avoid "combine," "modify," "extend" → use "develop," "propose," "introduce"
+- **Verb modesty**: Check for "introduce" or "propose" used with standard/borrowed techniques (losses, architectures, metrics). Replace with "use," "adopt," or "employ" unless the contribution is genuinely novel
+- **Articles before technical terms**: Verify definite articles ("the") are present before specific technical nouns at their definition ("We define the operator" not "We define operator")
 
 ### Pass 4: Grammar and Formatting
 
-Work through the checklist below item by item.
+Work through the checklist below item by item. Pay special attention to:
+
+- **Tense consistency by section**: Methods design in present tense, experimental procedures in past tense, results interpretation in present tense. Read each section and verify every verb is in the correct tense. Common error: present tense leaking into experiment descriptions ("We augment..." should be "We augmented...").
+- **Heading capitalization**: All section and subsection titles should follow consistent title case.
 
 ### Pass 5: LaTeX-Specific Review
 

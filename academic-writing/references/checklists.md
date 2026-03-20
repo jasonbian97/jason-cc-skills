@@ -39,6 +39,7 @@ This reference documents the essential checklist requirements for submitting aca
 - [ ] Double-blind requirements met (if applicable)
 - [ ] No author names, acknowledgments, or identifiable repository URLs (during review)
 - [ ] Prior work cited in third person (during review)
+- [ ] Section headings use consistent title case throughout
 - [ ] Page numbers present for review submission (or absent for camera-ready, per venue)
 
 ### Technical

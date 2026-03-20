@@ -470,13 +470,15 @@ When starting a sentence do not use "Fig.". Use "Figure". Similar for "Table"
 
 #### Pronoun Management
 
-**Minimize pronouns** ("this," "it," "these," "that"). When pronouns are necessary, use them as adjectives with a noun:
+**Use pronouns when their reference is unambiguous.** Only flag pronouns ("this," "it," "these," "that") when the referent is genuinely unclear. When a pronoun could refer to multiple antecedents, replace it with a noun or use it as an adjective with a noun:
+
+**Ambiguous** (flag): "We trained the model and evaluated the baseline. This shows that the approach works." (What does "this" refer to?)
+**Clear** (keep): "We trained the model for 200 epochs. This yields convergence within 50 epochs." (Only one possible referent)
+
+When clarifying an ambiguous pronoun, attach a noun:
 
 **Weak**: "This shows that the model converges."
 **Strong**: "This result shows that the model converges."
-
-**Weak**: "It improves performance."
-**Strong**: "This modification improves performance."
 
 #### Verb Placement
 
@@ -510,6 +512,8 @@ Delete these filler words and phrases in almost all cases:
 - "It is worth noting that" → just state it
 - "In order to" → "To"
 - Excessive connectives ("however," "moreover," "furthermore" when not needed)
+    - **Test**: Remove the connective and re-read. If the logical flow is clear without it, delete it.
+    - Common offenders at sentence start: "Specifically," "In particular," "However," "Moreover," "Additionally" — these are often crutches rather than signals. Keep them only when the logical relationship would be ambiguous without them.
 
 #### Sentence Construction Rules
 
@@ -558,6 +562,18 @@ Replace vague terms with specific ones.
 | fast         | 3x faster, 50ms latency                        |
 | good results | 92% accuracy, 0.85 F1                          |
 
+#### Common Word-Choice Fixes
+
+Small corrections that recur in academic manuscripts:
+
+| Draft Version | Corrected Version | Why |
+|--------------|-------------------|-----|
+| "resultant" | "resulting" | More natural in modern English |
+| "applies for" | "applies to" | Correct preposition |
+| "Unlike the comparatively well-studied X" | "Compared with X" | Simpler comparative structure |
+
+**Article usage with technical terms**: Definite articles ("the") are required when referring to a specific, previously introduced concept or a unique entity. A common error is omitting "the" before technical terms at their first formal definition: "We define **the** phase wrapping operator" not "We define phase wrapping operator."
+
 #### Consistent Terminology
 
 Referring to the same concept with different terms creates confusion.
@@ -591,6 +607,14 @@ When describing numeric findings, precision builds credibility:
 
 **Why**: "We combine X and Y" sounds like you stapled two existing ideas together. "We develop a method that leverages X for Y" sounds like genuine contribution.
 
+**Reserve "introduce" and "propose" for genuinely novel contributions.** When describing components that are standard or borrowed from prior work, use neutral verbs like "use," "apply," "adopt," or "employ." Claiming to "introduce" a well-known loss function or "propose" a standard architecture misleads the reader and irritates reviewers who know the technique predates your paper.
+
+**Weak**: "We introduce a mean squared error loss for training"
+**Strong**: "We use a mean squared error loss for training"
+
+**Weak**: "We propose a U-Net-based encoder-decoder architecture"
+**Strong**: "We adopt a U-Net-based encoder-decoder architecture"
+
 ---
 
 ### Mathematical Writing
@@ -621,6 +645,12 @@ $\mathcal{X}$, $\mathcal{D}$
 $\mathrm{softmax}$, $\mathrm{ReLU}$
 ```
 
+#### Equation Formatting
+
+- **Break long equations** across lines using `aligned`, `multline`, or `split` environments rather than letting them overflow the column
+- **Use `\bigl`/`\bigr` or `\Bigl`/`\Bigr`** for manually sized delimiters inside equations instead of `\left`/`\right` when the automatic sizing produces poor spacing (common with nested parentheses, fractions, or log/max expressions)
+- **Consistent delimiter sizing**: When nesting delimiters, increase size outward: `( \bigl( \Bigl( \biggl(`
+
 ---
 
 ## Part III: Quality Assurance
@@ -632,12 +662,17 @@ $\mathrm{softmax}$, $\mathrm{ReLU}$
 #### Text
 
 - [ ] Spelling and grammar (run spellcheck)
-- [ ] Consistent tense (past for completed work, present for claims)
+- [ ] Consistent tense — verify by section:
+    - **Methods section**: Present tense for describing the method design ("We define...", "The network takes...") but past tense for specific experimental procedures you performed ("We trained for 200 epochs", "Images were augmented with...")
+    - **Experiments section**: Past tense throughout for all procedures, data handling, and training details ("were randomly selected," "was not applied," "were determined by")
+    - **Results/Discussion**: Present tense for claims and interpretations ("Table 2 shows...", "DSHARP achieves...") but past tense for what you did to obtain them ("We evaluated...", "We compared...")
+    - Common error: present tense leaking into experiment descriptions (e.g., "We augment the data..." should be "We augmented the data..." when describing a completed experiment)
 - [ ] No dangling modifiers or ambiguous pronoun references
 - [ ] Consistent use of Oxford comma (or consistent omission)
 - [ ] Proper hyphenation of compound modifiers ("well-known method" but "the method is well known")
 - [ ] Em-dashes reserved for genuine paired parenthetical asides only; prefer commas, colons, or parentheses otherwise
-- [ ] "i.e." and "e.g." set off by commas for inline definitions/examples
+- [ ] "i.e." and "e.g." set off by commas: use `e.g.,` and `i.e.,` (with comma after), not `e.g.\ ` or `i.e.\ ` (backslash-space). In LaTeX, write `(e.g., this example)` not `(e.g.\ this example)`
+- [ ] Comma before coordinating conjunctions ("and," "but," "so," "yet") joining two independent clauses ("X is unavailable, and thus we implemented Y" not "X is unavailable and thus we implemented Y")
 
 #### LaTeX
 
@@ -656,6 +691,7 @@ $\mathrm{softmax}$, $\mathrm{ReLU}$
 - [ ] Use `\usepackage{microtype}` in preamble for improved character spacing and typography
 - [ ] If the template or existing tex uses `\cite{}` rather than `\citet{}`/`\citep{}`, stay consistent with the existing convention
 - [ ] Use `\looseness=-1` on paragraphs that overflow by 1-2 words to fit page limits (place before the paragraph's blank line)
+- [ ] Section and subsection headings use consistent title case: capitalize all major words, lowercase articles/prepositions/conjunctions of 3 or fewer letters unless they start the heading (e.g., "Preprocess Tagged MR Images with HARP," not "Preprocess tagged MR images with HARP")
 
 #### References
 
